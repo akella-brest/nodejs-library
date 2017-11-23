@@ -8,11 +8,21 @@ _.each([names, otherNames], function(nameGroup) {
 });
 
 function findSuperman(values) {
-    _.find(values, function(name) {
+    var div = document.getElementById("superMan");
+    var divTwo = document.getElementsByTagName("li");
+
+    var i = 0;
+
+    var timerId = setInterval(_.find(values, function(name) {
         if (name === 'Clark Kent') {
-            console.log(name + ': It\'s Superman!');
+            div.textContent = name + ': It\'s Superman!';
         } else {
-            console.log(name + '... No superman!');
+            divTwo[i].textContent  = name + '... No superman!';
+            i++;
         }
-    });
+    }), 1000);
+
+    setTimeout(function() {
+        clearInterval(timerId);
+    }, 7000);
 }
